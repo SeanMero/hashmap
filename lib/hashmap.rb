@@ -46,4 +46,13 @@ class HashMap < Array
     hashed_key = hash(key) % capacity
     self[hashed_key] != nil
   end
+
+  def remove(key)
+    hashed_key = hash(key) % capacity
+    if self[hashed_key].nil?
+      nil
+    else
+      self[hashed_key].delete(key)
+    end
+  end
 end

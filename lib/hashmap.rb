@@ -55,4 +55,8 @@ class HashMap < Array
       self[hashed_key].delete(key)
     end
   end
+
+  def length
+    self.num_keys
+  end
 end

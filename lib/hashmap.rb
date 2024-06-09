@@ -87,4 +87,14 @@ class HashMap < Array
     end
     answer
   end
+
+  def entries
+    answer = []
+    self.each do |elem|
+      next if elem.nil?
+
+      elem.each { |key, value| answer.push([key, value]) }
+    end
+    answer
+  end
 end

@@ -16,6 +16,8 @@ class HashMap < Array
     hash_code
   end
 
+  # set the value associated with a key
+  # if the key already exists, it will be overwritten
   def set(key, value)
     hashed_key = hash(key) % capacity
     if self[hashed_key].nil?
@@ -29,6 +31,8 @@ class HashMap < Array
     self.capacity *= 2 if self.num_keys > self.capacity * self.load_factor
   end
 
+  # get the value associated with a key
+  # return nil if key is not in the hash map
   def get(key)
     hashed_key = hash(key) % capacity
     if self[hashed_key].nil?
@@ -36,5 +40,10 @@ class HashMap < Array
     else
       self[hashed_key][key]
     end
+  end
+
+  def has?(key)
+    hashed_key = hash(key) % capacity
+    self[hashed_key] != nil
   end
 end

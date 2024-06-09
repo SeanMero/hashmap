@@ -2,7 +2,6 @@ class HashMap < Array
   attr_accessor :capacity, :load_factor, :num_keys
 
   def initialize(capacity = 16, load_factor = 0.75)
-    super
     @capacity = capacity
     @load_factor = load_factor
     @num_keys = 0
@@ -26,7 +25,16 @@ class HashMap < Array
     end
 
     # grow more buckets when needed
-    num_keys += 1
-    capacity *= 2 if num_keys > capacity * load_factor
+    self.num_keys += 1
+    self.capacity *= 2 if self.num_keys > self.capacity * self.load_factor
+  end
+
+  def get(key)
+    hashed_key = hash(key) % capacity
+    if self[hashed_key].nil?
+      nil
+    else
+      self[hashed_key][key]
+    end
   end
 end

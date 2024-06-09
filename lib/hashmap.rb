@@ -67,4 +67,14 @@ class HashMap < Array
       elem.each_key { |key| elem.delete(key) }
     end
   end
+
+  def keys
+    answer = []
+    self.each do |elem|
+      next if elem.nil?
+
+      elem.each_key { |key| answer.push(key) }
+    end
+    answer
+  end
 end

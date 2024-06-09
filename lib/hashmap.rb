@@ -59,4 +59,12 @@ class HashMap < Array
   def length
     self.num_keys
   end
+
+  def clear
+    self.each do |elem|
+      next if elem.nil?
+
+      elem.each_key { |key| elem.delete(key) }
+    end
+  end
 end
